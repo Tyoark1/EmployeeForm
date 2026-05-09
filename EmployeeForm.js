@@ -4,7 +4,6 @@ import '../EmployeeForm.css';
 class EmployeeForm extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = { name: '', email: '', title: '', department: '' }; 
     }
 
@@ -18,6 +17,8 @@ class EmployeeForm extends React.Component {
         
         console.log('Current State:', this.state); 
         
+        this.props.addEmployee(this.state);
+
         this.setState({ name: '', email: '', title: '', department: '' }); 
     }
 
