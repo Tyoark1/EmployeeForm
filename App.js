@@ -3,6 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EmployeeForm from './Components/EmployeeForm';
+import { Link } from 'react-router-dom';
+
+function EmployeeList(props) {
+
+  return (
+    <div className="employee-list">
+      <h1>Employee List</h1>
+      <ul>
+        {props.employees.map((employee) => (
+          <li key={employee.EmployeeId}>
+            {/* Create a link to the employee detail page */}
+            <Link to={`/employees/${employee.EmployeeId}`}>
+              {employee.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function App() {
   const [employees, setEmployees] = useState(() => {
@@ -28,8 +48,12 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Routes>
-            {}
-            <Route exact path="/" element={<EmployeeForm addEmployee={addEmployee} />} />
+            <Route exact path="/" element={
+              <>
+                <EmployeeForm addEmployee={addEmployee} />
+                <EmployeeList employees={employees} />
+              </>
+            } />
           </Routes>
         </header>
       </div>
