@@ -33,7 +33,7 @@
   }
   
   .employee-list h1 {
-    font-size: 24px;
+    font-size: calc(20px + 2vmin);
     margin-bottom: 16px;
   }
   
